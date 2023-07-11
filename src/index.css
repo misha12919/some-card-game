@@ -9,13 +9,24 @@ body {
 
 .tabble {
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100vh;
 }
 
+.text {
+  color: #fff;
+  font-size: 24px;
+}
+
+.possibility-text {
+  margin-top: 30px;
+}
+
 .hand {
   position: absolute;
-  bottom: 100px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -24,14 +35,14 @@ body {
 
 .field {
   position: absolute;
-  top: 150px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .trump-cards {
   position: absolute;
-  top: 80px;
+  top: 50px;
   left: 350px;
   display: flex;
   justify-content: flex-end;

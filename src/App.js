@@ -66,10 +66,9 @@ function App() {
     return counter
   }
 
-  console.log(countPossibilityToBeat());
-
   return (
   <div className="tabble">
+    <div className="text possibility-text">Количество возможностей побить карту: {countPossibilityToBeat()}</div>
     <div className="hand">
       {hand.map((el) => {
         return (
