@@ -17,6 +17,7 @@ function App() {
       })
     }
   }
+  // 0 буби  1 черви  2 крести  3 пики
 
   const getRandomHand = (cardsInHand, cardsInDeck) => {
     const randHand = []
@@ -51,15 +52,21 @@ function App() {
     return tempDeck[tempTrumpCard]
   })
 
-  console.log(tempCardToBeat);
-  console.log(tempTrumpCard);
-
   const [deck, setDeck] = useState(tempDeck.filter((_, idx) => {
     return !tempHand.includes(idx) && idx !== tempCardToBeat && idx !== tempTrumpCard
   }))
 
-  console.log(tempDeck)
-  console.log(deck);
+  const countPossibilityToBeat = () => {
+    let counter = 0
+    hand.forEach((el) => {
+      if ((el.suit === trumpCard.suit && el.suit !== cardToBeat.suit) || (el.suit === cardToBeat.suit && el.cost > cardToBeat.cost)) {
+        counter++
+      }
+    })
+    return counter
+  }
+
+  console.log(countPossibilityToBeat());
 
   return (
   <div className="tabble">
@@ -90,15 +97,18 @@ function App() {
           <img className="suit" src={suits[cardToBeat.suit]}></img>
         </div>
       </div>
-      <div className="card trump-card">
-        <div className="sumbols">
-          <div className="value">{trumpCard.value}</div>
-          <img className="suit" src={suits[trumpCard.suit]}></img>
+      <div className="trump-cards">
+        <div className="card trump-card">
+          <div className="sumbols">
+            <div className="value">{trumpCard.value}</div>
+            <img className="suit" src={suits[trumpCard.suit]}></img>
+          </div>
+          <div className="sumbols sumbols--right">
+            <div className="value">{trumpCard.value}</div>
+            <img className="suit" src={suits[trumpCard.suit]}></img>
+          </div>
         </div>
-        <div className="sumbols sumbols--right">
-          <div className="value">{trumpCard.value}</div>
-          <img className="suit" src={suits[trumpCard.suit]}></img>
-        </div>
+        <img className="card back-of-card" src="https://phonoteka.org/uploads/posts/2021-11/1635890714_8-phonoteka-org-p-fon-dlya-rubashki-kart-krasivie-9.png"></img>
       </div>
     </div>
   </div>)
